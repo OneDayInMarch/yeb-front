@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
     } else {
         if (to.path === '/') {
             next()
-        } else {
+        } else {//如果用户未登录，要跳转到指定的路由
             next('/?redirect=' + to.path)
         }
     }

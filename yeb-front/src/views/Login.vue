@@ -30,14 +30,13 @@
     data() {
       return {
         // 验证码
-        captchaUrl:'/api/captcha?time=' + new Date(),//获取响应码后端接口
+        captchaUrl:'/captcha?time=' + new Date(),//获取响应码后端接口
         loginForm: {
           username: 'admin',
           password: '123',
           code: '',
         },
         loading: false, // 加载中
-        checked: true,
         //校验规则，与表单绑定
         rules: {
           username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
@@ -52,7 +51,7 @@
     methods: {
       // 点击刷新验证码
       updateCaptcha() {
-      this.captchaUrl="/api/captcha?time="+new Date();
+      this.captchaUrl="/captcha?time="+new Date();
  
       },
       submitLogin() {

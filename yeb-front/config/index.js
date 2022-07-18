@@ -11,11 +11,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
+      '/': {
+        ws:false,//websocket
         changeOrigin: true, //跨域
         target: 'http://localhost:8081',
         pathRewrite: {
-          '^/api': ''
+          // '^/api': ''
         }
       },
     

@@ -91,9 +91,8 @@
             // 清空用户信息
             window.sessionStorage.removeItem('tokenStr')
             window.sessionStorage.removeItem('user')
-            // 路由替换到登录页面
-            // this.$router.replace('/')
             // 清空菜单信息；在src/utils/menus.js 中初始化菜单信息
+            // 路由替换到登录页面
             this.$store.commit('initRoutes', [])
             this.$router.replace('/')
           }).catch(() => {
@@ -131,7 +130,7 @@
   .homeHeader .userInfo {
     cursor: pointer;
   }
- 
+ /*用户头像样式设计 */
   .el-dropdown-link img {
     width: 48px;
     height: 48px;
