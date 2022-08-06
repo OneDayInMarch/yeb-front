@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {getRequest} from "@/utils/api";
-// import SockJS from 'sockjs-client' // 2-1 在线聊天-导入下载的在线聊天依赖
-// import Stomp from 'stompjs' // 2-1 在线聊天-导入下载的在线聊天依赖
+import SockJS from 'sockjs-client' // 2-1 在线聊天-导入下载的在线聊天依赖
+import Stomp from 'stompjs' // 2-1 在线聊天-导入下载的在线聊天依赖
 import {Notification} from 'element-ui';
 
 Vue.use(Vuex)
@@ -13,12 +13,10 @@ const store = new Vuex.Store({
     state: {
         routes: [],
         sessions: {},
-        // sessions: [],
         // 1-1 用来接收后端接口返回的数据
         admins: [],
         currentAdmin: JSON.parse(window.sessionStorage.getItem('user')), // 当前用户
         currentSession: null,
-        // currentSession: -1,
         filterKey: '',
         stomp: null, // 2-2 在线聊天-定义对象
         idDot: {} // 未读消息 对象
@@ -26,42 +24,42 @@ const store = new Vuex.Store({
     mutations: { // 与 state 同步执行；可以改变 state 对应的值的方法
         // 编辑用户 同步用户信息
         INIT_ADMIN(state, admin) {
-            state.currentAdmin = admin
+            state.currentAdmin = admin;
         },
         // 初始化路由 菜单
         initRoutes(state, data) {
-            state.routes = data
+            state.routes = data;
         },
-        // changecurrentSession(state, currentSession) {
-        //     state.currentSession = currentSession;
-        //     // 已读消息 小红点消失
-        //     Vue.set(state.idDot, state.currentAdmin.username + '#' + state.currentSession.username, false)
-        // },
-        // addMessage(state, msg) {
-        //     let mss = state.sessions[state.currentAdmin.username + '#' + msg.to]
-        //     if (!mss) {
-        //         // state.sessions[state.currentAdmin.username + '#' + msg.to] = []
-        //         Vue.set(state.sessions, state.currentAdmin.username + '#' + msg.to, [])
-        //     }
-        //     state.sessions[state.currentAdmin.username + '#' + msg.to].push
-        //     ({
-        //         content: msg.content,
-        //         date: new Date(),
-        //         self: !msg.notSelf // 不是自己
-        //     })
-        // },
-        // INIT_DATA(state) {
-        //     // 1-2 注释这一段 浏览器本地的历史聊天记录
-        //     let data = localStorage.getItem('vue-chat-session');
-        //     //console.log(data)
-        //     if (data) {
-        //         state.sessions = JSON.parse(data);
-        //     }
-        // },
-        // // 1-3 初始化数据
-        // INIT_ADMINS(state, data) {
-        //     state.admins = data
-        // }
+        changecurrentSession(state, currentSession) {
+            state.currentSession = currentSession;
+            // 已读消息 小红点消失
+            Vue.set(state.idDot, state.currentAdmin.username + '#' + state.currentSession.username, false)
+        },
+        addMessage(state, msg) {
+            let mss = state.sessions[state.currentAdmin.username + '#' + msg.to]
+            if (!mss) {
+                // state.sessions[state.currentAdmin.username + '#' + msg.to] = []
+                Vue.set(state.sessions, state.currentAdmin.username + '#' + msg.to, [])
+            }
+            state.sessions[state.currentAdmin.username + '#' + msg.to].push
+            ({
+                content: msg.content,
+                date: new Date(),
+                self: !msg.notSelf // 不是自己
+            })
+        },
+        INIT_DATA(state) {
+            // 1-2 注释这一段 浏览器本地的历史聊天记录
+            let data = localStorage.getItem('vue-chat-session');
+            // console.log(data)
+            if (data) {
+                state.sessions = JSON.parse(data);
+            }
+        },
+        // 1-3 初始化数据
+        INIT_ADMINS(state, data) {
+            state.admins = data;
+        }
     },
     // 异步执行
     actions: {
