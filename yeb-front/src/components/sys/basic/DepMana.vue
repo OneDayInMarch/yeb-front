@@ -24,7 +24,7 @@
           <el-button
               plain
               type="primary"
-              size="mini"
+              size="small"
               class="depBtn"
               @click="() => showAddDep(data)">
             添加部门
@@ -33,7 +33,7 @@
           <el-button
               plain
               type="danger"
-              size="mini"
+              size="small"
               class="depBtn"
               @click="() => deleteDep(data)">
             删除部门
@@ -172,8 +172,8 @@ export default {
       this.postRequest('/system/basic/department/', this.dep).then(resp => {
         if (resp) {
           // console.log(resp)
+          this.addDep2Deps(this.deps, resp.obj) // 23、手动插入部门 显示添加后的数据
           this.dialogVisible = false // 关闭对话框
-          this.addDep2Deps(this.deps, resp.data) // 23、【无效】手动插入部门 显示添加后的数据
           this.initDep() // 21、调用初始化方法 清空数据
         }
       })

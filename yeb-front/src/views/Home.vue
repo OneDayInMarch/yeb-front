@@ -8,7 +8,7 @@
           <el-button type="text" icon="el-icon-bell" size="normal"
                      style="margin-right: 8px;color: black;" @click="goChar"></el-button>
           <el-dropdown class="userInfo" @command="commandHandler">
-          <span class="el-dropdown-link">
+          <span class="el-dropdown-link" >
             {{ user.name }}<i><img :src="user.userFace"></i>
           </span>
             <el-dropdown-menu slot="dropdown">
