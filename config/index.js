@@ -20,12 +20,13 @@ module.exports = {
         }
       }
     },
-    proxyTable:{
-      '/ws':{
-        ws:true,
-        target: 'http://localhost:8081'
-      }
-    },
+    // proxyTable:{
+    //   '/ws':{
+    //     ws:true,
+    //     changeOrigin: true, //跨域
+    //     target: 'http://localhost:8081'
+    //   }
+    // },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined

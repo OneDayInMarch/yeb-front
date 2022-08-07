@@ -329,7 +329,7 @@
         <el-table-column
             label="操作"
             fixed="right"
-            width="300">
+            width="200">
           <template slot-scope="scope">
             <!-- 25-4 给编辑按钮绑定点击事件 @click="showEmpView(scope.row)" -->
             <el-button style="padding: 3px;" size="mini" @click="showEmpView(scope.row)">编辑</el-button>
