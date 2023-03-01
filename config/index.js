@@ -11,12 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/': {
+      '/api': {
         ws:false,//websocket
         changeOrigin: true, //跨域
-        target: 'http://localhost:8081',
+        // target:'http://150.158.33.73:8086',
+        target: 'http://localhost:8085',
         pathRewrite: {
-          // '^/api': ''
+          '^/api': ''
         }
       }
     },
@@ -29,7 +30,7 @@ module.exports = {
     // },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8082, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

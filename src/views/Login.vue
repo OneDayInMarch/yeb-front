@@ -30,7 +30,7 @@
     data() {
       return {
         // 验证码
-        captchaUrl:'/captcha?time=' + new Date(),//获取响应码后端接口
+        captchaUrl:'/api/captcha?time=' + new Date(),//获取响应码后端接口
         loginForm: {
           username: 'admin',
           password: '123',
@@ -51,7 +51,7 @@
     methods: {
       // 点击刷新验证码
       updateCaptcha() {
-      this.captchaUrl="/captcha?time="+new Date();
+      this.captchaUrl="/api/captcha?time="+new Date();
  
       },
       submitLogin() {
