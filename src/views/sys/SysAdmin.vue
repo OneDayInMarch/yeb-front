@@ -135,7 +135,7 @@ export default {
     },
     // 19、获取所有操作员
     initAllRoles() {
-      this.getRequest(' /system/admin/roles').then(resp => {
+      this.getRequest('/system/admin/roles').then(resp => {
         if (resp) {
           this.allRoles = resp
         }

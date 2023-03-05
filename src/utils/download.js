@@ -42,7 +42,7 @@ function unitToString(unitArray) {
 }
 
 // 下载文件的请求
-let base = ''
+let base = '/api';
 export const downloadRequest = (url, params) => {
     return service({
         method: 'get',
